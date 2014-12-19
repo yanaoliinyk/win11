@@ -1,0 +1,151 @@
+<?php
+  session_start();
+  if($_SESSION['username'] == null) {
+	$_SESSION['username'] = "user";
+	$_SESSION['user'] = "Гость";
+  }
+?>
+<!DOCTYPE HTML>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title> Olkapage </title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+
+</head>
+<div class="svg">
+    <svg>
+        <rect x="5" y="5" width="150" height="65" rx="20"
+              fill="url(#tg1)" stroke="grey" stroke-width="5" />
+        <defs>
+            <style type="text/css">
+                <![CDATA[
+                @font-face {
+                    font-family:Berlin Sans FB;
+                }
+                ]]>
+            </style>
+            <linearGradient id="tg" x1="0%" x2="0%" y1="0%" y2="100%">
+                <stop stop-color="blue" offset="10%"/>
+                <stop stop-color="yellow" offset="90%"/>
+
+            </linearGradient>
+            <linearGradient id="tg1" x1="0%" x2="0%" y1="0%" y2="100%">
+                <stop stop-color="orange" offset="30%"/>
+                <stop stop-color="grey" offset="70%"/>
+
+            </linearGradient>
+        </defs>
+        <text class="t1" x="30" y="48" font-size="30" fill="url(#tg)" style="font-family: 'Berlin Sans FB';opacity: 0.8; font-weight="bold" stroke="none">URF.com</text>
+    </svg>
+</div>
+<ul class="spisok">
+    <li> <a href="index.php">Головна </a></li>
+    <li><a href="news.php">Новини  </a></li>
+    <li><a href="kont.php">Контакти </a></li>
+</ul>
+<header>
+    <text class="text2">Цікаві факти</text>
+
+</header>
+<body bgcolor=#ffffe0>
+<div id="oo">
+    <nav class="menu1">
+
+        <ul class="spisok1">
+            <li><a href="rockf.php"> Рок-фестивалі</a></li>
+            <li><a href="galery.php"> Галерея </a></li>
+            <li><a href="map.php"> Карта фестивалів </a></li>
+            <li> <a href="facts.php"> Цікаві факти</a></li>
+            <?php
+                                      	if ($_SESSION['username'] == "user") {
+                                      	   echo '
+                                      	   <li>  <a href="reg1.php"> Реєстрація на сайті</a></li> ';
+            }
+            if($_SESSION['username'] == 'olyaarsenych@gmail.com') {
+            echo'
+            <li><span></span><a href="sas.php" class="color">САС</a></li>';
+            }
+            ?>        </ul>
+
+    </nav>
+     <?php
+           if ($_SESSION['username'] == "user") {
+            echo'
+             <div class="avtorization">
+             <div class="avtorization1">
+        <form  action="act.php" id="form1" method="post">
+            <label>Логін: </label>
+            <br>
+            <input class="input input1" type="text" name="log" id="log" maxlength="25" required>
+            <br>
+            <label>Пароль:</label>
+            <br>
+            <input class="input input1" type="password" name="pass" id="pass" maxlength="25" required>
+            <br>
+            <br>
+            <input type="submit" class="stylebut"  value="Війти">
+        </form>
+    </div>
+            <input type="button" class="stylebut" value="Авторизуватися" onclick="hideShowDivav();">
+
+    </div>
+    ';
+
+    }
+    else {
+    echo '
+    <div class="avtorization">
+        <p><span style="font-size:2 px;">Вітаємо,'.$_SESSION['user'].'!<span></p>
+        <form action ="quit.php" method="post">
+            <input type="submit" class="stylebut" value="Вийти" >
+            <br><br><br>
+        </form>
+        </div>';
+    }
+    ?>
+
+
+</div>
+
+<div id="g1">
+   <article>
+    <h1>У Кіровограді вперше відбудеться байк-рок фестиваль</h1>
+    <p class="text1">
+        У суботу, 20 вересня, у Кіровограді відбудеться благодійний байк-рок фестиваль "Вільний вітер".
+        Місце його дислокації – ангар "Агро-Експо" по вул. Мурманська, 8.
+    </p>
+       </article>
+    <article>
+    <h1>У Рівному на рок-фестивалі збиратимуть кошти. </h1>
+    <p class="text1">
+        У кінці серпня в Рівному відбудеться рок-фестиваль «Only Rock’n’roll», що матиме й благодійну мету.
+        На ньому збиратимуть кошти для допомоги українській армії, повідомляє ERVE.UA.
+        Як пояснив організатор фестивалю «Only Rock’n’roll» Микола Бондарчук, навіть під час війни потрібно
+        працювати, але при тому слід допомагати українським бійцям.
+        "Звісно, ми думали про те, що може статися так, що через певні події в Україні, фестиваль доведеться
+        відміняти, - пояснив він. – Але кожен має працювати. Я підтримую військових і хвилююся за те, що
+        відбувається на Сході України. Тому ми з директором ПДМ домовились, що в ході фестивалю організуємо
+        збір коштів на підтримку української армії".
+        Також Микола Бондарчук наголосив, що фестиваль буде безалкогольним, тобто проносити з собою спиртні
+        напої заборонено.
+        Вхід на фестиваль «Only Rock’n’roll» буде безкоштовним. Дійство відбудеться 30 серпня на літньому майданчику ПДМу.
+    </p>
+        </article>
+   <article><h1>Океан Ельзи</h1>
+    <p class="text1">
+        «Океан Ельзи», за словами Святослава Вакарчука, ніколи не братиме участі у конкурсах і фестивалях,
+        тобто у заходах, де учасники змагаються за місця (наприклад, «Євробаченні»). Такий принцип гурт ухвалив
+        ще на початку існування, після розчарування на одному з фестивалів, де «ОЕ» лідирував від початку аж до
+        виступу останнього колективу, який переміг, а «Океан» посів лише друге місце
+    </p>
+       </article>
+      <p align=center > <a class="stylebut" href="javascript:history.back()">Назад</a> <a class="stylebut" href="javascript:history.forward()">Вперед</a></p>
+
+
+ </div>
+
+
+</body>
+
+</html>
